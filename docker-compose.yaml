@@ -39,6 +39,9 @@ services:
     depends_on: 
       - database
     tty: true
+    volumes:
+      - ./be:/root
+      - /root/.cache/pip
 
 
   frontend: 
@@ -58,6 +61,9 @@ services:
     depends_on:
       - backend
     tty: true
+    volumes:
+      - ./fe:/app
+      - /app/node_modules
 
 networks: 
   db_be_network: 
