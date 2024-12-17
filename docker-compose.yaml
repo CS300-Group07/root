@@ -39,10 +39,9 @@ services:
     depends_on: 
       - database
     tty: true
-    volumes:
-      - ./be:/root
-      - /root/.cache/pip
-
+    volumes: 
+      - ./be:/app           # Mount source code
+      - backend_venv:/root/.cache/pip  # Persist Python packages cache
 
   frontend: 
     container_name: ${FRONTEND_CONTAINER_NAME}
@@ -70,4 +69,7 @@ networks:
     driver: bridge
   be_fe_network: 
     driver: bridge
+
+volumes:
+  backend_venv: 
 
